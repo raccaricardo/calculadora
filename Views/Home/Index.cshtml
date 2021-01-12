@@ -101,7 +101,8 @@
     textoDeResultado.style.color = "blue";//le damos color de letra
     var operator = true;
     var operation;
-    var arrayDisplay  = new Array;
+    var arrayDisplay = new Array;
+    var txtResult2;
     // var secondArrayNum = new Array;
     /*var thirdArrayNum = null;
     var fourthArrayNum = null;
@@ -135,7 +136,12 @@
     }
     function dltDigit() {
         arrayDisplay.pop();
-        textoDeResultado.value = arrayDisplay;
+        textoDeResultado.value = "";
+
+        for (var i = 0; i < arrayDisplay.length(); i++) {
+            textoDeResultado.value += arrayDisplay[i].toString;
+        }
+        
 
     }
     function operate(operator) {
