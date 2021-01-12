@@ -1,0 +1,144 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>Calculadora en HTML</h1>
+    <div class="row" style="width:25%; border:medium" id="divPrincipal">
+        <div class="col-8" id="divResultTxt">
+            @*-----TextBox Resultado ----*@
+            <input type="text" id="txtResultado" />
+        </div>
+
+        @*----Seccion de botones 7 al 9 y resta----*@
+        <div class="row">
+            <div class="col-sm-2">
+                <button class="btnCalc btn-primary" id="btn7" onclick="displayNumbers(7)">7</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="btnCalc btn-primary" id="btn8" onclick="displayNumbers(8)">8</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="btnCalc btn-primary" id="btn9" onclick="displayNumbers(9)">9</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="btnCalc btn-primary" id="btnDelete"><img src="../Views/Images/icn_deleteBtn.png" onclick="dltDigit"/></button>
+            </div>
+        </div>
+
+        @*----Seccion de botones 4 al 6 y suma----*@
+
+        <div class="row">
+            <div class="col-sm-2">
+                <button class="btnCalc btn-primary" id="btn4" onclick="displayNumbers(4)">4</button>
+            </div>
+            <div class="col-sm-2">
+
+                <button class="btnCalc btn-primary" id="btn5" onclick="displayNumbers(5)">5</button>
+            </div>
+            <div class="col-2">
+                <button class="btnCalc btn-primary" id="btn6" onclick="displayNumbers(6)">6</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="btnCalc btn-primary" id="btnDivided" onclick="displayNumbers('/')">÷</button>
+            </div>
+        </div>
+
+        @*----Seccion de botones 1 al 3 y division----*@
+
+        <div class="row">
+            <div class="col-sm-2">
+                <button class="btnCalc btn-primary" id="btn1" onclick="displayNumbers(1)">1</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="btnCalc btn-primary" id="btn2" onclick="displayNumbers(2)">2</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="btnCalc btn-primary" id="btn3" onclick="displayNumbers(3)">3</button>
+            </div>
+            <div class="col-sm-2">
+                <button class="btnCalc btn-primary" id="btnProduct " onclick="displayNumbers('*')">x</button>
+            </div>
+        </div>
+
+        @*----Seccion de botones 0, decimal, igual y suma----*@
+
+    <div class="row">
+        <div class="col-sm-2">
+            <button class="btnCalc btn-primary" id="btn0" onclick="displayNumbers('0')">0</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="btnCalc btn-primary" id="btnEquals" onclick="calculate">=</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="btnCalc btn-primary" id="btnAdd" onclick="displayNumbers('+')">+</button>
+        </div>
+        <div class="col-sm-2">
+            <button class="btnCalc btn-primary" id="btnSustract" onclick="displayNumbers('-')">-</button>
+        </div>
+    </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var textoDeResultado = document.getElementById("txtResultado");    
+    displayNumbers();
+    var btn1 = document.getElementById("btn1").innerHTML;
+    var btn2 = document.getElementById("btn2").innerHTML;
+    var btn3 = document.getElementById("btn3").innerHTML;
+    var btn4 = document.getElementById("btn4").innerHTML;
+    var btn5 = document.getElementById("btn5").innerHTML;
+    var btn6 = document.getElementById("btn6").innerHTML;
+    var btn7 = document.getElementById("btn7").innerHTML;
+    var btn8 = document.getElementById("btn8").innerHTML;
+    var btn1 = document.getElementById("btn9").innerHTML;
+    var btn0 = document.getElementById("btn0").innerHTML;
+    var btnDlt = document.getElementById("btnDelete").innerHTML;
+    var btnDivided = document.getElementById("btnDivided").innerHTML;
+    var btnProduct = document.getElementById("btnProduct").innerHTML;
+    var btnEquals = document.getElementById("btnEquals").innerHTML;
+    var btnAdd = document.getElementById("btnAdd").innerHTML;
+    var btnSustract = document.getElementById("btnSustract").innerHTML;
+    textoDeResultado.style.color = "blue";//le damos color de letra
+    var operator = true;
+    var operation;
+    var arrayDisplay  = new Array;
+    // var secondArrayNum = new Array;
+    /*var thirdArrayNum = null;
+    var fourthArrayNum = null;
+    var fifthArrayNum = null;   
+    function addNumbers(number) {
+        if (firstArrayNum.length == null) {
+            displayNumbers(number);
+            firstArrayNum.push(number);
+        } else {
+            secondArrayNum.push(number);
+            displayNumbers(number);
+        }
+
+    }
+    */
+    function displayNumbers(number) {
+        if (isNaN(number)) {
+            if (operator == false) {
+                textoDeResultado.value += number.toString();
+                arrayDisplay.push(number); 
+                operator = true;
+            } 
+        } else {
+            textoDeResultado.value += number.toString();
+            arrayDisplay.push(number);
+            operator = false;
+        }
+    }   
+    function calculate() {
+        textoDeResultado.value = eval(textoDeResultado.value.toString);
+    }
+    function dltDigit() {
+        arrayDisplay.pop();
+        textoDeResultado.value = arrayDisplay;
+
+    }
+    function operate(operator) {
+        this.operator = operator;
+    }
+</script>

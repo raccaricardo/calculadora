@@ -1,0 +1,33 @@
+﻿*{
+    padding:0;
+    margin:0;
+}
+h1 {
+    border-color: blanchedalmond;
+    border: solid;
+}
+
+.btnCalc {
+    width: 50px;
+    padding: 0;
+    margin: 0;
+}
+
+#divPrincipal {
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#txtResultadoId {
+    width: 200px;
+}
+
+#btnAdd, #btnDivided, #btnEquals, #btnProduct, #btnSustract  {
+    background-color: aqua;
+}
+
+#divResultTxt {
+    padding: 0;
+}
