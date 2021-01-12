@@ -22,7 +22,7 @@
                 <button class="btnCalc btn-primary" id="btn9" onclick="displayNumbers(9)">9</button>
             </div>
             <div class="col-sm-2">
-                <button class="btnCalc btn-primary" id="btnDelete"><img src="../Views/Images/icn_deleteBtn.png" onclick="dltDigit"/></button>
+                <button class="btnCalc btn-primary" id="btnDelete" onclick="dltDigit()"><img src="../Views/Images/icn_deleteBtn.png" onclick="dltDigit"/></button>
             </div>
         </div>
 
@@ -68,7 +68,7 @@
             <button class="btnCalc btn-primary" id="btn0" onclick="displayNumbers('0')">0</button>
         </div>
         <div class="col-sm-2">
-            <button class="btnCalc btn-primary" id="btnEquals" onclick="calculate">=</button>
+            <button class="btnCalc btn-primary" id="btnEquals" onclick="calculate()">=</button>
         </div>
         <div class="col-sm-2">
             <button class="btnCalc btn-primary" id="btnAdd" onclick="displayNumbers('+')">+</button>
@@ -80,67 +80,29 @@
     </div>
 </div>
 <script type="text/javascript">
-    var textoDeResultado = document.getElementById("txtResultado");    
-    displayNumbers();
-    var btn1 = document.getElementById("btn1").innerHTML;
-    var btn2 = document.getElementById("btn2").innerHTML;
-    var btn3 = document.getElementById("btn3").innerHTML;
-    var btn4 = document.getElementById("btn4").innerHTML;
-    var btn5 = document.getElementById("btn5").innerHTML;
-    var btn6 = document.getElementById("btn6").innerHTML;
-    var btn7 = document.getElementById("btn7").innerHTML;
-    var btn8 = document.getElementById("btn8").innerHTML;
-    var btn1 = document.getElementById("btn9").innerHTML;
-    var btn0 = document.getElementById("btn0").innerHTML;
-    var btnDlt = document.getElementById("btnDelete").innerHTML;
-    var btnDivided = document.getElementById("btnDivided").innerHTML;
-    var btnProduct = document.getElementById("btnProduct").innerHTML;
-    var btnEquals = document.getElementById("btnEquals").innerHTML;
-    var btnAdd = document.getElementById("btnAdd").innerHTML;
-    var btnSustract = document.getElementById("btnSustract").innerHTML;
+    var textoDeResultado = document.getElementById("txtResultado");      
     textoDeResultado.style.color = "blue";//le damos color de letra
     var operator = true;
-    var operation;
-    var arrayDisplay = new Array;
-    var txtResult2;
-    // var secondArrayNum = new Array;
-    /*var thirdArrayNum = null;
-    var fourthArrayNum = null;
-    var fifthArrayNum = null;   
-    function addNumbers(number) {
-        if (firstArrayNum.length == null) {
-            displayNumbers(number);
-            firstArrayNum.push(number);
-        } else {
-            secondArrayNum.push(number);
-            displayNumbers(number);
-        }
 
-    }
-    */
+
     function displayNumbers(number) {
         if (isNaN(number)) {
             if (operator == false) {
-                textoDeResultado.value += number.toString();
-                arrayDisplay.push(number); 
+                textoDeResultado.value += String(number);
+                arrayDisplay.push(number);
                 operator = true;
             } 
         } else {
-            textoDeResultado.value += number.toString();
-            arrayDisplay.push(number);
+            textoDeResultado.value += String(number);
             operator = false;
         }
     }   
     function calculate() {
-        textoDeResultado.value = eval(textoDeResultado.value.toString);
+        textoDeResultado.value = String(eval(textoDeResultado.value));
     }
     function dltDigit() {
-        arrayDisplay.pop();
-        textoDeResultado.value = "";
-
-        for (var i = 0; i < arrayDisplay.length(); i++) {
-            textoDeResultado.value += arrayDisplay[i].toString;
-        }
+        textoDeResultado.value = textoDeResultado.value.substring(0, textoDeResultado.value.length - 1);
+ 
         
 
     }
